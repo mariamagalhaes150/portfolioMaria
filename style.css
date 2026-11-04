@@ -1,0 +1,308 @@
+/* Reseta margens e define comportamento de rolagem suave */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f7eedf; /* Tom creme do fundo */
+    color: #4a2c38;           /* Tom escuro de texto */
+}
+
+/* Header Fixo no Topo */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 50px;
+    background-color: #dcb3b9; /* Tom rosado do topo */
+    border-bottom: 2px solid #a879a5; /* Linha de destaque */
+    z-index: 1000;
+}
+
+.logo img {
+    height: 2.5rem;
+    width: auto;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #4a2c38;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+header nav a:hover {
+    opacity: 0.7;
+}
+
+/* Estrutura das Seções */
+section {
+    min-height: 100vh;
+    padding: 120px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Seção Hero / Início */
+.hero-section .greeting {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+}
+
+.hero-section .bio {
+    font-size: 1.15rem;
+    max-width: 700px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+/* Botão "Me conheça" */
+.btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: #8c4e66; /* Cor vinho/bordô do botão */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #733f54;
+    transform: translateY(-2px);
+}
+
+.descricao p {
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    text-align: justify;
+    width: 55%;
+    margin-top: 40px;
+    
+}
+
+#sobre {
+   background-color: #f7d6d0;
+   position: relative; /* Adiciona isto para servir de referência à imagem */
+}
+
+
+#sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: -160px;
+    color: #4a2c38;
+}
+
+
+.imagem img {
+    width: 280px;          /* Define a largura */
+    height: 280px;         /* Mantém a mesma altura para o círculo ser perfeito */
+    object-fit: cover;     /* Impede que a foto fique esticada ou deformada */
+    border-radius: 50%;
+    
+    position: absolute;
+    right: 120px;          /* Aumente este valor para puxar a foto mais para a ESQUERDA */
+    top: 55%;              /* Ajuste para subir ou descer a imagem */
+    transform: translateY(-50%);
+}
+@media (max-width: 998px) {
+    .imagem img {
+    position: absolute;
+    right: 400px;          /* Aumente este valor para puxar a foto mais para a ESQUERDA */
+    top: 95%;              /* Ajuste para subir ou descer a imagem */
+  
+    }
+}
+/* Secção de Projetos */
+#projetos {
+    background-color: #8c4e66; /* Tom vinho/bordô do modelo */
+    padding: 100px 20px 80px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#projetos h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+#projetos p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 50px;
+}
+
+/* Container que coloca os cards lado a lado */
+.projetos-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Garante que em telemóveis os cards fiquem um debaixo do outro */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo individual de cada Card */
+.card-projeto {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Área da imagem do Card */
+.img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #385d70; /* Cor de fundo caso a imagem falhe */
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem sem distorcer */
+    display: block;
+}
+
+/* Linha com Ícone do GitHub e Título */
+.projeto-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.projeto-info i {
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.projeto-info h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* 1. Torna o card relativo para controlar a sobreposição */
+.card-projeto {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: z-index 0.3s;
+}
+
+/* Quando passa o rato, o card fica por cima dos vizinhos */
+.card-projeto:hover {
+    z-index: 10;
+}
+
+/* 2. Permite que o conteúdo saia para fora da caixa */
+.img-container {
+    width: 100%;
+    height: 200px;
+    overflow: visible; /* AQUI: permite a imagem sair para fora */
+    background-color: #385d70;
+    border-radius: 8px; /* Opcional */
+}
+
+/* Transição e bordas da imagem */
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px; /* Opcional */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+.card-projeto:hover .img-container img {
+    transform: scale(2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Efeito 3D flutuante */
+}
+
+/* Estilo do link que une o ícone e o título */
+.link-projeto {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;          /* Mantém a cor branca */
+    text-decoration: none;  /* Remove o sublinhado */
+    transition: opacity 0.3s ease;
+}
+
+/* Efeito ao passar o cursor por cima */
+.link-projeto:hover {
+    opacity: 0.8;          /* Suaviza a cor ligeiramente para mostrar que é clicável */
+}
+
+/* Remove margens padrão do título para alinhar perfeitamente com o ícone */
+.link-projeto h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #f7d6d0; /* Fundo rosado claro */
+    padding: 60px 20px;       /* Espaçamento acima e abaixo */
+    display: flex;
+    flex-direction: column;   /* Empilha a imagem e o texto na vertical */
+    align-items: center;       /* Centraliza horizontalmente tudo no meio */
+    justify-content: center;
+    text-align: center;
+}
+
+.logo-footer img {
+    height: 7rem;             /* Regula o tamanho da imagem da logo */
+    width: auto;              /* Mantém a proporção sem distorcer */
+    margin-bottom: 15px;      /* Distância entre a imagem e o texto */
+}
+
+footer p {
+    font-size: 1.25rem;
+    color: #4a2c38;           /* Tom de vinho escuro */
+    margin: 0;
+    font-weight: 400;
+}
