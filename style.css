@@ -290,7 +290,7 @@ footer {
 
 footer p {
     font-size: 1.25rem;
-    color: #4a2c38;           /* Tom de vinho escuro */
+    color: #4a2c38;          
     margin: 0;
     font-weight: 400;
 }
@@ -310,4 +310,4 @@ footer p {
 .redes-footer a:hover {
     color: #8c4e66;
     transform: translateY(-3px);
-}
+} 
