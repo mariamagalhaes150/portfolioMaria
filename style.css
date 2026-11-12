@@ -12,8 +12,8 @@ html {
 }
 
 body {
-    background-color: #f7eedf; /* Tom creme do fundo */
-    color: #4a2c38;           /* Tom escuro de texto */
+    background-color: #f7eedf; /* fundo */
+    color: #4a2c38;           /* texto */
 }
 
 /* Header Fixo no Topo */
@@ -115,7 +115,7 @@ section {
 
 #sobre {
    background-color: #f7d6d0;
-   position: relative; /* Adiciona isto para servir de referência à imagem */
+   position: relative; 
 }
 
 #sobre h2 {
@@ -126,14 +126,14 @@ section {
 }
 
 .imagem img {
-    width: 280px;          /* Define a largura */
-    height: 280px;         /* Mantém a mesma altura para o círculo ser perfeito */
+    width: 400px;          /*  largura */
+    height: 400px;         /* altura para o círculo */
     object-fit: cover;     /* Impede que a foto fique esticada ou deformada */
     border-radius: 50%;
     
     position: absolute;
-    right: 120px;          /* Aumente este valor para puxar a foto mais para a ESQUERDA */
-    top: 55%;              /* Ajuste para subir ou descer a imagem */
+    right: 15rem;          /*  puxar a foto mais para a ESQUERDA */
+    top: 55%;              /*  subir ou descer a imagem */
     transform: translateY(-50%);
 }
 @media (max-width: 998px) {
@@ -146,7 +146,7 @@ section {
 }
 /* Secção de Projetos */
 #projetos {
-    background-color: #8c4e66; /* Tom vinho/bordô do modelo */
+    background-color: #8c4e66; 
     padding: 100px 20px 80px;
     text-align: center;
     color: #ffffff;
@@ -160,7 +160,7 @@ section {
 }
 
 #projetos p {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: #ffffff;
     opacity: 0.9;
     margin-bottom: 50px;
@@ -181,29 +181,69 @@ section {
     width: 320px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Área invisível que impede a animação de tremer ao descer o mouse */
+.card-projeto::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    right: -15px;
+    bottom: -95px; /* Cobre o espaço para onde o link desce */
+    z-index: -1;
+    pointer-events: none;
+}
+
+.card-projeto:hover {
+    z-index: 10;
+}
+
+.card-projeto:hover::after {
+    pointer-events: auto; /* Mantém o hover ativo enquanto você clica no link */
 }
 
 /* Área da imagem do Card */
 .img-container {
     width: 100%;
     height: 200px;
-    overflow: hidden;
-    background-color: #385d70; /* Cor de fundo caso a imagem falhe */
+    overflow: visible;
+    background-color: #612f53;
+    border-radius: 8px;
 }
 
 .img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ajusta a imagem sem distorcer */
+    object-fit: cover;
     display: block;
+    border-radius: 8px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Zoom suave e controlado da imagem */
+.card-projeto:hover .img-container img {
+    transform: scale(1.70);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Linha com Ícone do GitHub e Título */
 .projeto-info {
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 12px;
     margin-top: 15px;
+    transition: transform 0.35s ease;
+}
+
+/* Desce o ícone e o link suavemente abaixo da imagem ampliada */
+.card-projeto:hover .projeto-info {
+    transform: translateY(75px);
 }
 
 .projeto-info i {
@@ -211,70 +251,20 @@ section {
     color: #ffffff;
 }
 
-.projeto-info h3 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: #ffffff;
-    margin: 0;
-}
-
-/* 1. Torna o card relativo para controlar a sobreposição */
-.card-projeto {
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
-    transition: z-index 0.3s;
-}
-
-/* Quando passa o rato, o card fica por cima dos vizinhos */
-.card-projeto:hover {
-    z-index: 10;
-}
-
-/* 2. Permite que o conteúdo saia para fora da caixa */
-.img-container {
-    width: 100%;
-    height: 200px;
-    overflow: visible; /* AQUI: permite a imagem sair para fora */
-    background-color: #385d70;
-    border-radius: 8px; /* Opcional */
-}
-
-/* Transição e bordas da imagem */
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px; /* Opcional */
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-
-.card-projeto:hover .img-container img {
-    transform: scale(2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Efeito 3D flutuante */
-}
-
 /* Estilo do link que une o ícone e o título */
 .link-projeto {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #ffffff;          /* Mantém a cor branca */
-    text-decoration: none;  /* Remove o sublinhado */
+    color: #ffffff;
+    text-decoration: none;
     transition: opacity 0.3s ease;
 }
 
-/* Efeito ao passar o cursor por cima */
 .link-projeto:hover {
-    opacity: 0.8;          /* Suaviza a cor ligeiramente para mostrar que é clicável */
+    opacity: 0.8;
 }
 
-/* Remove margens padrão do título para alinhar perfeitamente com o ícone */
 .link-projeto h3 {
     margin: 0;
     font-size: 1.25rem;
@@ -303,4 +293,21 @@ footer p {
     color: #4a2c38;           /* Tom de vinho escuro */
     margin: 0;
     font-weight: 400;
+}
+
+.redes-footer {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.redes-footer a {
+    color: #4a2c38;
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.redes-footer a:hover {
+    color: #8c4e66;
+    transform: translateY(-3px);
 }
